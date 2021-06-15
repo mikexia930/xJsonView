@@ -1,12 +1,22 @@
 {
-  "name": "v2.0.0",
-  "version": "0.1.0",
-  "private": true,
+  "name": "x-json-view-vue",
+  "description": "Vue component for json view",
+  "version": "1.0.2",
+  "keywords": [
+    "vue",
+    "component",
+    "json view",
+    "json format"
+  ],
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name xjsonview --dest lib packages/index.js"
   },
+  "main": "lib/xjsonview.umd.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
