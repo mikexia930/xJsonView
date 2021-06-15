@@ -1,8 +1,8 @@
-# x-json-view
+# x-json-view-vue
 
 ### 版本
 ***
-* v1.0.0
+* v1.0.6
 
 ### 基于
 ***
@@ -12,7 +12,7 @@
 ### 安装
 ***
 ````
-npm install xjsonview
+npm install x-json-view-vue
 ````
 
 ### 使用
