@@ -1,5 +1,5 @@
 <template>
-  <div class="x-parse-view">
+  <div :class="[wrapClass]">
     <template v-if="isValidData">
       <node-html
         :node-data="formalData"
@@ -33,7 +33,7 @@ const NodeItem = {
     isLastOne: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   computed: {
     valueTypeClass() {
@@ -166,6 +166,10 @@ export default {
     showDepth: {
       type: Number,
       default: 1,
+    },
+    wrapClass: {
+      type: String,
+      default: '',
     },
   },
   data() {
