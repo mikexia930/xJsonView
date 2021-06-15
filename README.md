@@ -19,7 +19,7 @@ npm install x-json-view-vue
 ***
 **在main.js中引入**
 ````
-import xJsonView from '../x-json-view';
+import xJsonView from 'x-json-view-vue';
 ````
 
 **组件中使用**
