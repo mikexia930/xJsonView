@@ -4,7 +4,7 @@
 
 ### 版本
 ***
-* v1.0.10
+* v1.0.11
 
 ### 基于
 ***
@@ -22,6 +22,7 @@ npm install x-json-view-vue
 **在main.js中引入**
 ````
 import xJsonView from 'x-json-view-vue';
+vue.use(xJsonView);
 ````
 
 **组件中使用**
