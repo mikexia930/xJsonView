@@ -191,15 +191,25 @@ export default {
       activeNodeData: [],
     };
   },
-  created() {
-    this.parseJsonData();
-    if (this.isValidData) {
-      this.makeHtml();
+  watch: {
+    jsonData(newValue) {
+      console.log(newValue);
+      this.formatJson();
     }
   },
+  created() {
+   this.formatJson();
+  },
   methods: {
+    formatJson() {
+      this.parseJsonData();
+      if (this.isValidData) {
+        this.makeHtml();
+      }
+    },
     parseJsonData() {
       try {
+        this.isValidData = true;
         this.parseData = JSON.parse(this.jsonData);
         this.formalData.type = Array.isArray(this.parseData) ? 'array' : 'object';
       } catch (err) {
@@ -212,7 +222,11 @@ export default {
     formatData() {
       const bubbleData = {};
       this.dataRecursion(this.parseData, '', 0, 0, bubbleData);
-      this.$set(this.formalData, 'child', bubbleData);
+      if (this.$set) {
+        this.$set(this.formalData, 'child', bubbleData);
+      } else {
+        this.formalData.child = bubbleData;
+      }
       this.parseData = null;
     },
     dataRecursion(data, path, key, depth, lastData) {
@@ -220,6 +234,9 @@ export default {
       const lastDataCopy = lastData;
       Object.keys(data).forEach((jsonKey) => {
         const curPath = path.toString() ? `${path}-${keyCopy}` : keyCopy;
+        if (data[jsonKey] === null) {
+          data[jsonKey] = 'null';
+        }
         if (typeof data[jsonKey] === 'object') {
           lastDataCopy[keyCopy] = {
             show: depth < this.showDepth ? true : false,
