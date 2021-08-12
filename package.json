@@ -1,7 +1,7 @@
 {
   "name": "x-json-view-vue",
   "description": "Vue component for json view",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "keywords": [
     "vue",
     "component",
