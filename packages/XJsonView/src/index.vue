@@ -59,7 +59,7 @@ const NodeItem = {
     return <p>
       <span>"{ this.itemData.name }"<span>:</span></span>
       <span class={ this.valueTypeClass }>
-        { this.valueTypeClass === 'stringColor' ? `"${ (this.itemData.value).toString() }"` : (this.itemData.value).toString() }
+        { this.valueTypeClass === 'stringColor' ? `"${ String(this.itemData.value) }"` : String(this.itemData.value) }
         { this.isLastOne ? '' : <span>,</span> }
       </span>
     </p>
@@ -234,10 +234,7 @@ export default {
       const lastDataCopy = lastData;
       Object.keys(data).forEach((jsonKey) => {
         const curPath = path.toString() ? `${path}-${keyCopy}` : keyCopy;
-        if (data[jsonKey] === null) {
-          data[jsonKey] = 'null';
-        }
-        if (typeof data[jsonKey] === 'object') {
+        if (data[jsonKey] !== null && typeof data[jsonKey] === 'object') {
           lastDataCopy[keyCopy] = {
             show: depth < this.showDepth ? true : false,
             name: jsonKey,
